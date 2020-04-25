@@ -1,4 +1,4 @@
-FROM centos:centos7.6.1810
+FROM centos:centos8
 LABEL "maintainer"="Marco Mornati <marco@mornati.net>"
 LABEL "com.github.actions.name"="RPM Builder"
 LABEL "com.github.actions.description"="Build RPM using RedHat Mock"
