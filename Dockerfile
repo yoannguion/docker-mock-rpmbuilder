@@ -6,7 +6,8 @@ LABEL "com.github.actions.icon"="pocket"
 LABEL "com.github.actions.color"="green"
 
 RUN yum -y --setopt="tsflags=nodocs" update && \
-	yum -y --setopt="tsflags=nodocs" install epel-release mock rpm-sign expect && \
+	yum -y --setopt="tsflags=nodocs" install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
+	yum -y --setopt="tsflags=nodocs" install mock rpm-sign expect && \
 	yum clean all && \
 	rm -rf /var/cache/yum/
 
