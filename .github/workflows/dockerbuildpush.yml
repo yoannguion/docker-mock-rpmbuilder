@@ -1,5 +1,3 @@
-name: Docker Image CI
-
 name: Build And Push Docker
 on:
   push:
