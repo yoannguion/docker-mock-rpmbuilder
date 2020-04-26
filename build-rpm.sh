@@ -78,15 +78,12 @@ if [ ! -z "$SOURCE_RPM" ]; then
           echo "$MOCK_BIN $DEFINE_CMD -r $MOCK_CONFIG --rebuild $MOUNT_POINT/$SOURCE_RPM --resultdir=$OUTPUT_FOLDER" > $OUTPUT_FOLDER/script-test.sh
         fi
 elif [ ! -z "$SPEC_FILE" ]; then
-        if [ -z "$SOURCES" ]; then
-                echo "You need to specify SOURCES env variable pointing to folder or sources file (only when building with SPEC_FILE)"
-                exit 1;
-        fi
         echo "      SPEC_FILE:     $SPEC_FILE"
         echo "      SOURCES:       $SOURCES"
         echo "      OUTPUT_FOLDER: $OUTPUT_FOLDER"
         echo "      MOCK_DEFINES:  $MOCK_DEFINES"
         echo "========================================================================"
+        /srpm-tool-get-sources $MOUNT_POINT/$SPEC_FILE $MOUNT_POINT/$SOURCES
         if [ ! -z "$NO_CLEANUP" ]; then
           # do not cleanup chroot between both mock calls as 1st does not alter it
           echo "$MOCK_BIN $DEFINE_CMD -r $MOCK_CONFIG --buildsrpm --spec=$MOUNT_POINT/$SPEC_FILE --sources=$MOUNT_POINT/$SOURCES --resultdir=$OUTPUT_FOLDER --no-cleanup-after" > $OUTPUT_FOLDER/script-test.sh
